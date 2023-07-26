@@ -19,14 +19,19 @@
 		<require_module>org.openmrs.module.webservices.rest</require_module>
 		<require_module>org.openmrs.module.openhmis.commons</require_module>
 	</require_modules>
-	
+
 	<!-- Module Activator -->
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.BackboneFormsActivator</activator>
-	
-	
+
+	<globalProperty>
+		<property>openhmis.rest.baseurl</property>
+		<description>The URI prefix through which inventory frontend will use to build rest URLS, should be of the form http://{ipAddress}:{port}/{contextPath}. Example https://localhost/openmrs
+		</description>
+	</globalProperty>
+
 	<!-- Maps hibernate file's, if present -->
 	<mappingFiles>
-				
+
 	</mappingFiles>
 
 	<!-- Internationalization -->
