@@ -43,6 +43,19 @@ public class InitJsController {
 
 		model.addAttribute("maxResults", maxResults);
 		model.addAttribute("contextPath", request.getContextPath());
-		model.addAttribute("restUrl", RestConstants.URI_PREFIX);
+		model.addAttribute("restUrl", getRestUrl());
+	}
+
+	private String getRestUrl() {
+		String openHmisBaseURL = Context.getAdministrationService().getGlobalProperty("openhmis.rest.baseurl");
+		if(openHmisBaseURL == null)
+			return null;
+
+		if (!openHmisBaseURL.endsWith("/")) {
+			openHmisBaseURL = openHmisBaseURL + "/";
+		}
+		openHmisBaseURL = openHmisBaseURL + "ws/rest/";
+
+		return openHmisBaseURL;
 	}
 }
